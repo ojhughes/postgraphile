@@ -46,7 +46,7 @@ LABEL description="Instant extensible high-performance GraphQL API for your Post
 EXPOSE 5000
 ENV GRAPHILE_TURBO=1
 WORKDIR /postgraphile/
-ENTRYPOINT ["./cli.js"]
+ENTRYPOINT ["./cli.js", "--retry-on-init-fail", "--connection", "postgres-service.postgraphile", "--host", "postgres-service.postgraphile"]
 
 COPY --from=clean /postgraphile/ /postgraphile/
 RUN yarn install --frozen-lockfile --production=true --no-progress

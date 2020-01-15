@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  namespace: postgraphile-system
+  labels:
+    app: postgraphile
+  name: postgraphile
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgraphile
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: postgraphile
+    spec:
+      containers:
+      - image: ambivalentotter/postgraphile:latest
+        name: postgraphile
+        resources: {}
+status: {}
